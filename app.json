@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Gardenia",
+    "slug": "florarie-gardenia",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fcfcff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ro.gardenia.gardenia"
+    },
+    "android": {
+      "package": "ro.gardenia.gardenia"
+    }
+  }
+}
