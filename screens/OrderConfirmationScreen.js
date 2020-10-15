@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   View,
   Image,
@@ -11,19 +12,23 @@ import {
 import Colors from '../constants/Colors';
 
 const OrderConfirmationScreen = props => {
+    const orderMeta = useSelector(state => state.orders.meta);
 
   return (
     <View style={styles.screen}>
         <View style={styles.centered}>
-            <View style={styles.imageView}>
-            <Image
-                    style={styles.image}
-                    source={require('../assets/logoalb.png')}
-            />
-            </View>
-            <Text style={styles.textPrimary}>Comanda a fost trimisa cu succes.</Text>
-            <Text style={styles.text}>Iti multumim. Aceasta va fi expediata in cel mai scurt timp posibil.
-            </Text>
+            <Text style={styles.textPrimary}>Detaliile noastre bancare</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.account_number}</Text>
+            <Text style={styles.text}>Banca</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.bank_name}</Text>
+            <Text style={styles.text}>IBAN</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.iban}</Text>
+            <Text style={styles.text}>Numar comanda</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.number}</Text>
+            <Text style={styles.text}>Total plata</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.total}</Text>
+            <Text style={styles.text}>Contact</Text>
+            <Text style={{...styles.text, ...styles.textUnder}}>{orderMeta.suplier_email}</Text>
             <Button 
                 title={"Inapoi la Magazin"} 
                 color={Colors.accent} 
@@ -62,22 +67,46 @@ const styles = StyleSheet.create({
     },
     textPrimary: {
         fontFamily: 'playfair',
-        fontSize: 32,
+        fontSize: 20,
         color: Colors.iron,
-        textAlign: 'center',
+        textAlign: 'center'
     },
     text: {
         fontSize: 14,
         textAlign: 'center',
-        margin: 16,
         fontFamily: 'montserrat',
-        color: Colors.iron,
+        color: Colors.iron
+    },
+    textUnder: {
+        marginTop: 8,
         marginBottom: 24
+    },
+    view: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    logo: {
+        marginBottom: 4,
+        fontSize: 24,
+        color: Colors.accent,
+        textTransform: 'uppercase',
+        fontFamily: 'playfair',
+        fontWeight: '400'
     }
 });
 
 OrderConfirmationScreen.navigationOptions = {
-    header: null
+    headerStyle: {
+        backgroundColor: Colors.primary
+    },
+    headerLeft: null,
+    headerTintColor: Colors.primary,
+    headerTitle:
+    <View style={styles.view}>
+        <Text style={styles.logo}>Gardenia</Text>
+    </View>
 }
 
 export default OrderConfirmationScreen;

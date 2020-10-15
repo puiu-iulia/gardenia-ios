@@ -27,11 +27,6 @@ const PlaceOrderScreen = props => {
     const email = useSelector(state => state.auth.userId);
     const cartItems = useSelector(state => state.cart.items);
     const cartTotalAmount = useSelector(state => state.cart.totalAmount);
-    
-    const countyData = [];
-    for (const key in data.judete) {
-      countyData.push(data.judete[key].nume);
-    }
 
     const [billingName, setBillingName ] = useState(user ? user.billingName : '');
     const [billingEmail, setBillingEmail ] = useState(user ? user.billingEmail : '');
@@ -181,8 +176,8 @@ const PlaceOrderScreen = props => {
                                 setBillingCounty(billingCounty);
                               }}
                             >
-                              {countyData.map((item, index) => {
-                                return (<Picker.Item label={item} value={item} key={index}/>) 
+                              {data.judete.map((item, index) => {
+                                return (<Picker.Item label={item.nume} value={item.auto} key={index}/>) 
                               })}
                             </Picker>
                         </View>
@@ -281,8 +276,8 @@ const PlaceOrderScreen = props => {
                                   setCounty(county);
                                 }}
                               >
-                                {countyData.map((item, index) => {
-                                  return (<Picker.Item label={item} value={item} key={index}/>) 
+                                {data.judete.map((item, index) => {
+                                  return (<Picker.Item label={item.nume} value={item.auto} key={index}/>) 
                                 })}
                               </Picker>
                           </View>
